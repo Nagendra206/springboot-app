@@ -1,4 +1,5 @@
-FROM lolhens/baseimage-openjre
-ADD target/springbootApp.jar springbootApp.jar
-EXPOSE 80
-ENTRYPOINT ["java", "-jar", "springbootApp.jar"]
+FROM anapsix/alpine-java
+VOLUME /tmp
+ADD target/springbootApp.jar app.jar
+EXPOSE 8080
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
